@@ -16,10 +16,14 @@ router.get('/albums/:albumId', async (req, res, next) => {
 			where: {
 				id: req.params.albumId,
 			},
-			include: {
-				model: Artist,
-				model: Song,
-			},
+			include: [
+				{
+					model: Artist,
+				},
+				{
+					model: Song,
+				},
+			],
 		});
 		res.send(all);
 	} catch (e) {
